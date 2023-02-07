@@ -22,7 +22,7 @@ def get_products():
 
 @app.route("/filtered-products")
 def get_products_by():
-    return products.get_by()
+    return products.get_by(request.json)
 
 
 @app.post("/products")

@@ -32,8 +32,17 @@ class productService:
             products.append(product)
         return json.dumps(products, indent=3)
 
-    def get_by(self):
-        return 'by'
+    def get_by(self, content):
+        query = "SELECT * FROM products WHERE title=%s and variant_sku=%s"
+        values = (content["title"], content["sku"])
+        self.cursor.execute(query, values)
+        row = self.cursor.fetchone()
+        column = [t[0] for t in self.cursor.description]
+
+        product = {}
+        for i, value in enumerate(row):
+            product[column[i]] = value
+        return json.dumps(product, indent=3)
 
     def add(self, content):
         keys, values, types = map_to_object(content)
