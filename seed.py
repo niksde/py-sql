@@ -24,7 +24,7 @@ cursor = con.cursor()
 # create db/table if not exists
 cursor.execute("CREATE DATABASE IF NOT EXISTS shoppingCart")
 cursor.execute("USE shoppingCart")
-cursor.execute("CREATE TABLE IF NOT EXISTS products(handle text, title text, body text, vendor varchar(50), type varchar(50), tags text, option1_name varchar(50), option1_value varchar(50), option2_name varchar(50), option2_value varchar(50), option3_name varchar(50), option3_value varchar(50), variant_sku varchar(50), variant_grams varchar(50), variant_inventory_tracker varchar(50), variant_inventory_qty varchar(50), variant_inventory_policy varchar(50), variant_fulfillment_service varchar(50), variant_price varchar(50), variant_compare_at_price varchar(50), image_src text)")
+cursor.execute("CREATE TABLE IF NOT EXISTS products(id int NOT NULL AUTO_INCREMENT, PRIMARY KEY (id),  handle text, title text, body text, vendor varchar(50), type varchar(50), tags text, option1_name varchar(50), option1_value varchar(50), option2_name varchar(50), option2_value varchar(50), option3_name varchar(50), option3_value varchar(50), variant_sku varchar(50), variant_grams varchar(50), variant_inventory_tracker varchar(50), variant_inventory_qty varchar(50), variant_inventory_policy varchar(50), variant_fulfillment_service varchar(50), variant_price varchar(50), variant_compare_at_price varchar(50), image_src text)")
 
 
 def map_to_object(obj):

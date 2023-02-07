@@ -1,4 +1,4 @@
-from flask import Flask, Response
+from flask import Flask, Response, request
 from services.product import productService
 
 app = Flask(__name__)
@@ -27,12 +27,12 @@ def get_products_by():
 
 @app.post("/products")
 def add_product():
-    return Response(products.add(), status=201, mimetype='application/json')
+    return products.add(request.json)
 
 
-@app.delete("/products")
-def remove_product():
-    return Response(products.remove(), status=202, mimetype='application/json')
+@app.delete("/products/<id>")
+def remove_product(id):
+    return Response(products.remove(id), status=202, mimetype='application/json')
 
 
 @app.route("/products-csv")
