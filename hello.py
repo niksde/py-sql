@@ -38,3 +38,6 @@ def remove_product(id):
 @app.route("/products-csv")
 def get_products_csv():
     return products.get_csv()
+
+if __name__ == '__main__':
+    app.run()

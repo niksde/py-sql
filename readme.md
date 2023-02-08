@@ -3,10 +3,10 @@
 - pipenv shell
 
 # Populate data into SQL
-- python3 seed.py
+- python seed.py
 
 # Run REST server
-- flask --app hello run
+- python hello.py
 
 # API Endpoint
 - http://127.0.0.1:5000
