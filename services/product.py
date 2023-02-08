@@ -33,10 +33,13 @@ class productService:
         return json.dumps(products, indent=3)
 
     def get_by(self, content):
-        query = "SELECT * FROM products WHERE title=%s and variant_sku=%s"
-        values = (content["title"], content["sku"])
+        query = "SELECT * FROM products WHERE title=%s and variant_sku=%s and body LIKE CONCAT('%%', %s, '%%')"
+        values = (content["title"], content["sku"], content["body"])
         self.cursor.execute(query, values)
         row = self.cursor.fetchone()
+        if row is None:
+            return Response('Product not found', status=404, mimetype='application/json')
+
         column = [t[0] for t in self.cursor.description]
 
         product = {}
